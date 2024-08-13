@@ -14,7 +14,13 @@ tags: [git]
 Git repository를 클론해온다.
 
 ```shell
-git clone [git-address]
+git clone https://github.com/[계정]/[repo-name].git
+```
+
+git remote, push 등 원격으로 여러 동작을 수행하기 위해서는 ACCESS TOKEN이 필요하다. 이 경우, ACCESS TOKEN을 통해서 clone도 가능하다.
+
+```shell
+git clone https://[ACCESS_TOKEN]@github.com/[계정]/[repo-name].git
 ```
 
 
@@ -35,6 +41,12 @@ git config --global user.name [계정]
 
 ```shell
 git remote add origin https://github.com/[계정]/[repo-name]
+```
+
+이 경우에도 ACCESS TOKEN을 통해서 연결할 수 있다.
+
+```shell
+git remote add origin https://[ACCESS_TOKEN]@github.com/[계정]/[repo-name]
 ```
 
 ### 원격 연결 삭제
