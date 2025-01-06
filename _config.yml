@@ -117,7 +117,7 @@ comments:
     issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
-    repo: kjh2159/kjh-icnl.github.io # <gh-username>/<repo>
+    repo: kjh2159/kjh2159.github.io # <gh-username>/<repo>
     repo_id: R_kgDOMijKwQ
     category: Announcements
     category_id: DIC_kwDOMijKwc4CiSG4
