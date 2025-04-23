@@ -1,4 +1,11 @@
-# How to control brightness in Android Shell
+---
+title: How to Control Brightness in Android Shell
+date: 2025-04-21 17:00:00 +0900
+categories: [Linux, Android]
+tags: [Android, Mobile, Rooting, kernel, brightness]
+---
+
+# How to Control Brightness in Android Shell
 
 ## 들어가며
 
