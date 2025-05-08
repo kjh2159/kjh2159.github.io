@@ -1,6 +1,6 @@
 ---
 title: How to Measure Memory Bandwidth in Real Time on Android
-date: 2025-05-08 17:00:00 +0900
+date: 2025-05-08 01:00:00 +0900
 categories: [Linux, Android]
 tags: [Android, Mobile, Rooting, kernel, Memory, Bandwidth, Measurement]
 ---
