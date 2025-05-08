@@ -8,7 +8,7 @@ tags: [Android, Mobile, Rooting, kernel, Memory, Bandwidth, Measurement]
 # How to Measure Memory Bandwidth in Real Time on Android
 
 > 본 글은 Google Pixel9 루팅 기기를 기준으로 작성하였다.
-{ :.prompt-warning }
+{: .prompt-warning }
 
 ## 들어가며
 
