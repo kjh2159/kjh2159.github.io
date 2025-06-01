@@ -74,9 +74,9 @@ Bus는 quad channel에 각 channel의 bus width는 16 bit이다. 이때 1 beat =
 Transaction의 경우, Cache Line 하나가 전송되려면 총 4번이 일어나야 한다.
 Pixel9의 경우 `bus_access`가 beat이었고, `l3d_cache_refill`과 `l3d_cache_wb`가 transaction 단위임을 알 수 있다.
 
-$$\textrm{bus\_access} \times \textrm{tractions} \approx \left (  \textrm{l3d\_cache\_refill} + \textrm{l3d\_cache\_wb} \right ) \times \textrm{beats}$$
+$$ \textrm{bus\_access} \times \textrm{tractions} \approx \left (  \textrm{l3d\_cache\_refill} + \textrm{l3d\_cache\_wb} \right ) \times \textrm{beats} $$
 
-$$184.787MB \times 4 = 739.148MB \approx \left (  84.130M + 22.364M \right ) \times 8 = 851.952MB$$
+$$ 184.787MB \times 4 = 739.148MB \approx \left (  84.130M + 22.364M \right ) \times 8 = 851.952MB $$
 
 이 정도 값이 나온다.
 이 정보들을 수집해서 평균값을 내면 된다.
