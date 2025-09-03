@@ -22,7 +22,7 @@ SQL로 분석하는 것도 좋지만, 더 확장성이 좋은 분석을 위해�
 
 ```shell
 pip install perfetto
-pip insall pandas
+pip install pandas
 ```
 
 Perfetto UI 사이트에 가보면, 여러가지 열어보다 보면 `track_id`를 확인할 수 있다. 이 `track_id`를 기준으로 우리는 여러가지 값을 가져올 수 있다. 그리고, value를 기준으로 power 값 계산이 가능하고 이 계산은 [구글 소스](https://android.googlesource.com/platform/external/perfetto/%2B/refs/heads/ui-stable/src/trace_processor/perfetto_sql/stdlib/android/power_rails.sql)를 참고했다. 
