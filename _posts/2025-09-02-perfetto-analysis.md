@@ -5,7 +5,7 @@ categories: [Linux, Android]
 tags: [Android, Mobile, Rooting, kernel, Perfetto, Logging, Power]
 ---
 
-# Perfetto 사용법
+# Perfetto 분석하기
 
 ## 1. Intro
 
