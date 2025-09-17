@@ -16,7 +16,7 @@ tags: [python, conda, pyenv, venv, linux]
 [여기](https://www.anaconda.com/download)에서 anaconda installer 설치해준다.
 
 ```shell
-sh Anaconda3-2022.04-Linux-x86_64.sh
+sh Anaconda3-2020.04-Linux-x86_64.sh
 source ~/.bashrc
 ```
 
