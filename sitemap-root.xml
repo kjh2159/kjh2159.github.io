@@ -1,0 +1,83 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML 선언 -->
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 실제 URL들을 나열하는 컨테이너 -->
+
+  <url>
+    <!-- 홈(루트) 페이지를 명시적으로 포함 -->
+    <loc>{{ site.url }}/</loc>
+    <!-- 정규화된 홈 URL -->
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <!-- 사이트 빌드 시각을 기준으로 lastmod 지정 (필요 시 커스텀 가능) -->
+  </url>
+
+  {% comment %}
+    포스트들: Chirpy 테마 기준 /posts/포스트명/ 형태로 생성됩니다.
+    index.html 제거로 정규 URL을 만듭니다.
+  {% endcomment %}
+  {% for post in site.posts %}
+  <url>
+    <!-- 포스트 URL -->
+    <loc>{{ site.url }}{{ post.url | remove: 'index.html' }}</loc>
+    <!-- 마지막 수정 시각: last_modified_at 있으면 우선, 없으면 date -->
+    <lastmod>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</lastmod>
+  </url>
+  {% endfor %}
+
+  {% comment %}
+    일반 페이지들: about, archives, tags, categories 등 테마가 만들어주는 페이지 포함.
+    layout이 있는 페이지만 포함하고, 피드 전용 레이아웃은 제외합니다.
+  {% endcomment %}
+  {% for page in site.pages %}
+    {% if page.layout and page.layout != 'feed' %}
+      {% assign lm = page.last_modified_at | default: page.date | default: site.time %}
+  <url>
+    <!-- 정적/일반 페이지 URL -->
+    <loc>{{ site.url }}{{ page.url | remove: 'index.html' }}</loc>
+    <!-- 마지막 수정 시각 -->
+    <lastmod>{{ lm | date_to_xmlschema }}</lastmod>
+  </url>
+    {% endif %}
+  {% endfor %}
+
+  {% comment %}
+    (선택) 태그/카테고리 인덱스 페이지를 확실히 포함.
+    Chirpy는 개별 태그/카테고리 상세 페이지를 별도로 생성하지 않고
+    /tags/, /categories/에서 앵커로 관리하는 경우가 많아
+    그 인덱스 페이지를 넣어 검색 노출 경로를 보장합니다.
+  {% endcomment %}
+  <url>
+    <!-- 태그 인덱스 페이지 -->
+    <loc>{{ site.url }}/tags/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+  </url>
+
+  <url>
+    <!-- 카테고리 인덱스 페이지 -->
+    <loc>{{ site.url }}/categories/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+  </url>
+
+  <url>
+    <!-- 아카이브 페이지 -->
+    <loc>{{ site.url }}/archives/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+  </url>
+
+  <url>
+    <!-- 소개(About) 페이지 -->
+    <loc>{{ site.url }}/about/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+  </url>
+
+  {% comment %}
+    주의: /jinhwi/ 아래의 URL들은 별도 repo에서 제공하는 sitemap.xml이 책임집니다.
+    여기서 중복 수록하지 않습니다.
+  {% endcomment %}
+
+</urlset>
+<!-- urlset 끝 -->
