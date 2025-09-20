@@ -7,4 +7,5 @@ User-agent: *
 
 Disallow: /norobots/
 
-Sitemap: {{ '/sitemap.xml' | absolute_url }}
+Sitemap: {{ '/sitemap.xml' | absolute_url }} 
+Sitemap: https://kjh2159.github.io/jinhwi/sitemap.xml
