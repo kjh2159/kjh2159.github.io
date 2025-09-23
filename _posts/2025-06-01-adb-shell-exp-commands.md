@@ -43,3 +43,13 @@ su -c "taskset {core-affinity} {command}"
 
 코어가 더 많거나 적은 경우도 있다. 예를 들어, S24는 `1*BIG + 2*MIDH + 3*MIDL + 4*LITTLE`이다.
 BIG과 MIDL만 활성화 시키고 싶다면, `1001110000`을 16진수로 변환한 `270`을 넣으면 된다.
+
+## 3. Get Device Model Name
+
+```shell
+getprop ro.product.system.model
+getprop ro.product.vendor.model
+getprop ro.product.product.model
+getprop ro.product.odm.model
+getprop ro.product.system_ext.model
+```
