@@ -1,5 +1,6 @@
 ---
 title: Python 가상환경 초기 설정 정리
+date: 2025-09-18 10:00:00 +0900
 categories: [python, virtual environment]
 tags: [python, conda, pyenv, venv, linux]
 ---
