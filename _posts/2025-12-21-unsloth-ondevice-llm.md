@@ -47,6 +47,8 @@ export PATH=$JAVA_HOME/bin:$PATH
 java -version
 echo $JAVA_HOME
 ```
+> 혹시나 `java -version` 결과가 not found error라면, git bash를 재시작하거나 컴퓨터를 재시작하면  된다.
+{: .prompt-info }
 
 ### *B. Android commandline tools 설치*
 
@@ -85,4 +87,106 @@ export ANDROID_NDK=$ANDROID_HOME/ndk/25.0.8775105
 ```
 
 ## 3. Get the Code
+
+드디어 사전 준비가 끝났다. 이제 코드를 받아서 빌드만 해주면 된다.
+
+```
+cd /path/that/you/want
+git clone https://github.com/meta-pytorch/executorch-examples.git
+cd executorch-examples
+```
+
+향하는 경로를 잘보고 clone을 해주자.
+
+## 4. Build the APK
+
+```bash
+./gradlew :app:assembleDebug
+```
+> 에러가 발생하면, 아래 trouble shooting을 보고 오자.
+
+이제 아래의 주소에서 빌드된 `.apk` 파일을 발견할 수 있을 것이다.
+
+```bash
+app/build/outputs/apk/debug/app-debug.apk
+```
+
+## 5. 앱 설치
+
+먼저, `adb`를 통해 설치해줄텐데, adb를 휴대폰에 연결해줄 것이다.
+아래의 명령어를 컴퓨터와 휴대폰을 연결하자.
+
+```bash
+adb devices
+```
+"attached device"라고 뜨면 연결이 잘 된 것이다. 
+그리고, 위의 `.apk` 파일을 휴대폰에 아래 명령어를 통해 설치해주자.
+
+```bash
+adb install -r app/build/outputs/apk/debug/app-debug.apk
+```
+
+## 6. 모델 다운로드 및 임베딩
+
+*이 스텝도 마찬가지로 휴대폰을 PC와 연결한 상태에서 진행하도록 하자.*
+
+[이곳](https://huggingface.co/kjh2159/Qwen3-0.6B-unsloth-pte/tree/main)에 중간 파일들을 모두 업로드해놓았다.
+Unsloth가 기본 모델의 `.pte` 파일을 안 올려놓아서, 따로 학습을 진행해 업로드해두었다.
+학습은 A6000 4장 기준으로 모델 파일 변환까지 합쳐 30분 정도 걸린 것같다.
+
+일단 필요한 파일들만 다운로드 받아 엔진에 삽입하자.
+`curl` 명령어가 안 된다면, 먼저 다운 받자. 또는 그냥 huggingface가서 직접 다운로드 받아도 괜찮다.
+
+```bash
+# 모델 다운로드
+curl -L https://huggingface.co/kjh2159/Qwen3-0.6B-unsloth-pte/resolve/main/qwen3_0.6B_model.pte
+curl -L https://huggingface.co/kjh2159/Qwen3-0.6B-unsloth-pte/resolve/main/tokenizer.json
+
+# 모델 삽입 공간 생성
+adb shell mkdir -p /data/local/tmp/llama
+adb shell chmod 777 /data/local/tmp/llama
+
+# 모델 삽입
+adb push qwen3_0.6B_model.pte /data/local/tmp/llama
+adb push tokenizer.json /data/local/tmp/llama
+```
+
+## 7. 모델 적용
+
+![Desktop View](/posts/imgs/ExecuTorchLlamaDemo.jpg){: width="300" height="533" .w-50 .right}
+
+설치된 앱을 키고, 우측 상단의 설정(톱니바퀴)을 열어 모델 파일, tokenizer를 선택해주면 되고, 모델 타입도 Qwen3로 바꿔주면 끝이다.
+우측은 실제 결과이다.
+
+## Trouble Shooting
+
+### *A. Gradle class 오류*
+
+```shell
+오류: 기본 클래스 org.gradle.wrapper.GradleWrapperMain을(를) 찾거나 로드할 수 없습니다.
+원인: java.lang.ClassNotFoundException: org.gradle.wrapper.GradleWrapperMain
+```
+
+이 에러는 기존에 git bash에서 conda를 사용하게 될 때, conda 경로와 충돌하여 발생할 수 있다.
+conda를 비활성화해주면 해결된다.
+
+```
+conda deactivate
+```
+
+### *B. SDK Location not found 오류*
+
+sdk 디렉토리를 명확하게 잡을 수 있도록 설정해주면 된다.
+```bash
+echo "sdk.dir=$HOME/android-sdk" > llm/android/LlamaDemo/local.properties
+```
+
+### *C. Cannot find symbol 오류*
+
+Deprecated code 때문에 발생할 수 있다. 아래 코드를 실행해주자.
+```bash
+sed -i 's/e.getDetailedError()/e.getMessage()/g' llm/android/LlamaDemo/app/src/main/java/com/example/executorchllamademo/MainActivity.java
+```
+
+
 
