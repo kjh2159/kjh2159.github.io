@@ -153,7 +153,7 @@ adb push tokenizer.json /data/local/tmp/llama
 
 ## 7. 모델 적용
 
-![Desktop View](assets/img/posts/ExecuTorchLlamaDemo.jpg){: width="300" height="533" .w-50 .right}
+![Desktop View](assets/img/posts/ExecuTorchLlamaDemo.jpg){: width="300" height="533"}
 설치된 앱을 키고, 우측 상단의 설정(톱니바퀴)을 열어 모델 파일, tokenizer를 선택해주면 되고, 모델 타입도 Qwen3로 바꿔주면 끝이다.
 우측은 실제 결과이다.
 
