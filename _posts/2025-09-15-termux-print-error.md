@@ -23,7 +23,7 @@ Android termux에서 C/C++ 코드를 짜서 출력을 하다보면, 위와 같�
 
 ## 2. 원인
 
-원래 CLI(command Line Interface)나 텍스트에서 줄바꿈은 LF(Line Feed, 개행)과 CR(Carriage Return, 복귀)로 이루어진다.
+원래 CLI(Command Line Interface)나 텍스트에서 줄바꿈은 LF(Line Feed, 개행)과 CR(Carriage Return, 복귀)로 이루어진다.
 LF는 커서를 좌우는 고정하고 한 줄 아래로 내리는 개행을 의미하고, CR은 동일 라인에서 커서를 가장 첫 부분으로 옮기는 복귀를 의미한다.
 
 이 문제가 발생하는 이유는 줄바꿈 출력시 CR이 제대로 되지 않아서 발생했기 때문이다.
