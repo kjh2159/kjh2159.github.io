@@ -90,6 +90,10 @@ docker run -it \
   ghcr.io/snapdragon-toolchain/arm64-android:v0.3
 ```
 
+> `docker run`이 permission denied 에러를 보인다면, `sudo`릍 통해 실행해주면 된다. \
+> 일반적으로 `sudo`를 붙이지 않으면 실행되지 않는 환경이 구축되기도 하는데 이는 보안을 위한 사항이므로 이상한 현상은 아니다.
+{: .prompt-info }
+
 `--platform linux/amd64` 옵션은 현재 머신이 ARM(M1/M2 Mac 등)이더라도 amd64 이미지를 강제로 실행하도록 지정한다. 이는 Android NDK나 특정 벤더 툴체인이 x86_64 환경을 전제로 빌드된 경우에 특히 중요하다.
 
 `-u $(id -u):$(id -g)`는 컨테이너 내부 프로세스를 호스트 사용자 UID/GID로 실행하도록 설정한다. 이 옵션이 없으면 컨테이너에서 생성된 파일이 root 소유가 되어, 호스트에서 수정이나 삭제가 번거로워질 수 있다.
