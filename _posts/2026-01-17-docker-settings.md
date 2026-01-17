@@ -101,7 +101,7 @@ docker run -it \
 이 패턴은 빌드, 테스트, 스크립트 실행처럼 한 번 쓰고 버리는 컨테이너에 적합하다.
 
 ```shell
-docker pull --platform linux/amd64 ghcr.io/snapdragon-toolchain/arm64-android:v0.3
+docker pull ghcr.io/snapdragon-toolchain/arm64-android:v0.3
 
 docker run --rm -it `
   -v ${PWD}:/work `
