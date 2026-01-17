@@ -1,8 +1,8 @@
 ---
 title: Docker 세팅법 및 사용법 정리
 date: 2026-01-17 10:00:00 +0900
-categories: [Android, LLM]
-tags: [Android, LLM, AI, Unsloth, ExecuTorch, PyTorch]
+categories: [Docker]
+tags: [Docker, CI/CD, toolchain]
 ---
 
 # Docker 세팅법 및 사용법 정리
