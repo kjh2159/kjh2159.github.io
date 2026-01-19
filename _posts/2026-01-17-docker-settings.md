@@ -117,6 +117,9 @@ docker run --rm -it `
 
 `-v ${PWD}:/work`는 앞선 예제와 동일하게 현재 디렉토리를 컨테이너에 마운트하고, `-w /work`는 컨테이너 시작 시 **작업 디렉토리(working directory)**를 /work로 설정한다. 이 덕분에 컨테이너에 진입하자마자 별도의 cd 없이 바로 작업을 시작할 수 있다. 마지막의 bash는 컨테이너 실행 시 기본 엔트리포인트 대신 Bash 셸을 실행하도록 지정한 것이다.
 
+> docker shell을 나가려면, `exit`을 입력하면 된다.
+{: .prompt-info }
+
 --- 
 
 출처: [도커](https://docs.docker.com/engine/install/ubuntu), [Snapdragon-toolchain 깃허브](https://github.com/snapdragon-toolchain/docker/releases/tag/v0.3), [시작하세요! 도커/쿠버네티스](https://www.yes24.com/product/goods/148124010)
