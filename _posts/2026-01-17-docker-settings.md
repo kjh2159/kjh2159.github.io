@@ -107,9 +107,9 @@ docker run -it \
 ```shell
 docker pull ghcr.io/snapdragon-toolchain/arm64-android:v0.3
 
-docker run --rm -it `
-  -v ${PWD}:/work `
-  -w /work `
+docker run --rm -it \
+  -v ${PWD}:/work \
+  -w /work \
   ghcr.io/snapdragon-toolchain/arm64-android:v0.3 bash
 ```
 
