@@ -1,11 +1,11 @@
 ---
-title: C/C++로 Perfetto 사용해 Android 분석하기
+title: C/C++에서 Perfetto를 사용한 Android 분석
 date: 2026-02-02 12:00:00 +0900
 categories: [LLM, Perfetto]
 tags: [LLM, Android, Perfetto, Linux]
 ---
 
-# C/C++로 Perfetto 사용해 Android 분석하기
+# C/C++에서 Perfetto를 사용한 Android 분석
 
 ## 1. 들어가며
 
