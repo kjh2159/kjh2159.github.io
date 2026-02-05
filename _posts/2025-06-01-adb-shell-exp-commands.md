@@ -53,3 +53,15 @@ getprop ro.product.product.model
 getprop ro.product.odm.model
 getprop ro.product.system_ext.model
 ```
+
+## 4. Battery Slate Mode
+
+Battery slate mode가 켜지면, 휴대폰 충전이 되지 않는다.
+
+```shell
+# no charging
+echo 1 > /sys/class/power_supply/battery/batt_slate_mode
+
+# charging
+echo 0 > /sys/class/power_supply/battery/batt_slate_mode
+```
