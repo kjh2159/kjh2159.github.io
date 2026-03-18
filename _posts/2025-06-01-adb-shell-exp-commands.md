@@ -65,3 +65,23 @@ echo 1 > /sys/class/power_supply/battery/batt_slate_mode
 # charging
 echo 0 > /sys/class/power_supply/battery/batt_slate_mode
 ```
+
+## 5. Swap Memory Off
+
+스왑 메모리를 사용하지 않도록 비활성화하는 코드이다.
+
+```shell
+swapoff /dev/block/zram0
+```
+
+> 만약 `/dev/block/zram0` 경로가 보이지 않는다면, find 또는 grep을 활용해서 `zram*`이 존재하는지부터 찾아보자.
+
+## 6. 경로 고정
+
+(특히 termux 내에서) `su`를 사용하면 루트경로로 완전히 실제 읽는 경로가 달라질 수 있다.
+
+따라서, 현재 경로에서 읽게 만들기 위해서는 추가 옵션이 필요하다.
+
+```shell
+su -p -c "<Your Command>"
+```
