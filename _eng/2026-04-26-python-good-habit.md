@@ -1,6 +1,6 @@
 ---
 title: (Python) Good Coding Habits Part 1
-date: 2024-08-07 07:00:00 +0900
+date: 2026-04-26 07:00:00 +0900
 categories: [python, habit]
 tags: [python, habit, coding, programming]
 ---
